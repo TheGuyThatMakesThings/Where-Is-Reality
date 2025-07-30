@@ -18,7 +18,7 @@ function love.load()
     player.speed = 3
     player.spritesheet = love.graphics.newImage('sprites/prototype-sheet.png')
 
-    player.grid = anim8.newGrid( 21, 26, 128, 128 )
+    player.grid = anim8.newGrid( 21, 28, 128, 128 )
 
     player.animations = {}
 
@@ -37,6 +37,7 @@ function love.load()
 end
 
 function love.update(dt)
+    local idling = true
 
     if joystick ~= nil then
         if joystick:isGamepadDown("dpleft") then
@@ -62,27 +63,27 @@ function love.update(dt)
         if love.keyboard.isDown("right") then
             player.x = player.x + player.speed
             player.anim = player.animations.right
-            player.idling = false
+            idling = false
         end
 
         if love.keyboard.isDown("left") then
             player.x = player.x - player.speed
             player.anim = player.animations.left
-            player.idling = false
+            idling = false
         end
         if love.keyboard.isDown("down") then
             player.y = player.y + player.speed
             player.anim = player.animations.down
-            player.idling = false
+            idling = false
         end
 
         if love.keyboard.isDown("up") then
             player.y = player.y - player.speed
             player.anim = player.animations.up
-            player.idling = false
+            idling = false
         end
 
-        if player.idling == true then
+        if idling == true then
             player.anim:gotoFrame(1)
         end
 
@@ -96,6 +97,6 @@ end
 -- Code still works fine on computer this way, also saves time.
 function love.draw()
     if screen ~= "bottom" then
-        player.anim:draw(player.spritesheet, player.x, player.y, nil, 10)
+        player.anim:draw(player.spritesheet, player.x, player.y, nil, 6)
     end
 end
