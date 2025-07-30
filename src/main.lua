@@ -67,7 +67,7 @@ function love.update(dt)
 
         player.anim:update(dt)
 
-    end
+    
 end
 
 -- Add screen into the parameters of love.draw for 3DS branch.
