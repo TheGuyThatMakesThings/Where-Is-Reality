@@ -8,6 +8,9 @@ function love.load()
     camera = require 'libraries.camera'
     cam = camera()
 
+    wf = require 'libraries.windfield'
+    world = wf.newWorld(0, 0)
+
     anim8 = require 'libraries.anim8'
     sti = require 'libraries.sti'
     gameMap = sti('maps/testmap.lua')
@@ -21,7 +24,7 @@ function love.load()
     player = {}
     player.x = 400
     player.y = 200
-    player.speed = 3
+    player.speed = 300
     player.spritesheet = love.graphics.newImage('sprites/prototype-sheet.png')
 
     player.grid = anim8.newGrid( 21, 28, 128, 128 )
@@ -35,8 +38,25 @@ function love.load()
 
     player.anim = player.animations.right
     player.idling = true
+    player.collider = world:newBSGRectangleCollider(400, 250, 50, 100, 10)
+    player.collider:setFixedRotation(true)
+
+
+
+    walls = {}
+    if gameMap.layers["Walls"] then
+        for i, obj in pairs(gameMap.layers["Walls"].objects) do
+            local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
+            wall:setType('static')
+            table.insert(walls, wall)
+        end
+    end
+
+
+
 
     love.graphics.setBackgroundColor(4, 2, 5)
+
 
 
 
@@ -44,54 +64,66 @@ end
 
 function love.update(dt)
     local idling = true
+    local vx
+    local vy
 
     if joystick ~= nil then
         if joystick:isGamepadDown("dpleft") then
             player.x = player.x - player.speed
             player.anim = player.animations.left
+            idling = false
         end
         if joystick:isGamepadDown("dpright") then
             player.x = player.x + player.speed
             player.anim = player.animations.right
+            idling = false
         end
         if joystick:isGamepadDown("dpup") then
             player.y = player.y - player.speed
             player.anim = player.animations.up
+            idling = false
         end
         if joystick:isGamepadDown("dpdown") then
             player.y = player.y + player.speed
             player.anim = player.animations.down
+            idling = false
         end
     end
 
 
         -- This code is only allowed to exist on the computer branch. DO NOT let this get on the 3DS-latest branch in anyway at all.
         if love.keyboard.isDown("right") then
-            player.x = player.x + player.speed
+            vx = player.speed
             player.anim = player.animations.right
             idling = false
         end
 
         if love.keyboard.isDown("left") then
-            player.x = player.x - player.speed
+            vx = player.speed * -1
             player.anim = player.animations.left
             idling = false
         end
         if love.keyboard.isDown("down") then
-            player.y = player.y + player.speed
+            vy = player.speed
             player.anim = player.animations.down
             idling = false
         end
 
         if love.keyboard.isDown("up") then
-            player.y = player.y - player.speed
+            vy = player.speed * -1
             player.anim = player.animations.up
             idling = false
         end
 
+        player.collider:setLinearVelocity(vx, vy)
+
         if idling == true then
             player.anim:gotoFrame(1)
         end
+
+        world:update(dt)
+        player.x = player.collider:getX()
+        player.y = player.collider:getY()
 
 
         player.anim:update(dt)
@@ -108,6 +140,7 @@ function love.draw()
         cam:attach()
             gameMap:drawLayer(gameMap.layers["Tile Layer 1"])
             player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 10, 12)
+            world:draw
         cam:detach()
     end
 end
