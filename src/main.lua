@@ -40,20 +40,20 @@ function love.update(dt)
   --  end
 -- Don't criticize me on the weirdly positioned comments, they are not my proudest work.
 
-
-    if joystick:isGamepadDown("dpleft") then
-        player.x = player.x - player.speed
+    if joystick ~= nil then
+        if joystick:isGamepadDown("dpleft") then
+            player.x = player.x - player.speed
+        end
+        if joystick:isGamepadDown("dpright") then
+            player.x = player.x + player.speed
+        end
+        if joystick:isGamepadDown("dpup") then
+            player.y = player.y - player.speed
+        end
+        if joystick:isGamepadDown("dpdown") then
+            player.y = player.y + player.speed
+        end
     end
-    if joystick:isGamepadDown("dpright") then
-        player.x = player.x + player.speed
-    end
-    if joystick:isGamepadDown("dpup") then
-        player.y = player.y - player.speed
-    end
-    if joystick:isGamepadDown("dpdown") then
-        player.y = player.y + player.speed
-    end
-
 
 
     -- This code has been commented out because the game literally does not function on LOVEPOTION with this existing.
