@@ -9,7 +9,7 @@ function love.load()
     cam = camera()
 
     anim8 = require 'libraries.anim8'
-    sti = requite 'libraries.sti'
+    sti = require 'libraries.sti'
     gameMap = sti('maps/testmap.lua')
 
 
