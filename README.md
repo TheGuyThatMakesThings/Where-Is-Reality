@@ -2,9 +2,8 @@
 A game about losing reality and maybe even yourself due to a coma.
 
 
-### The source code is OUT NOW!
-I didn't spend very long revising it, it is a very early prototype that I whipped up in a few minutes.
-Also Github's web VS Code feature is very useful, absolutely using that again.
+### Notice
+3DS does not take full priority for updates anymore, there may be missing features or extra bugs for it.
 
 
 
