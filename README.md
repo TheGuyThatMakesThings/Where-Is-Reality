@@ -4,7 +4,12 @@ A game about losing reality and maybe even yourself due to a coma.
 # 3DS OWNERS!
 Switch to 3DS-latest for the most recent 3DS build.
 
+
 I am trying to prioritize both ways to play the game, but computer is going to have the MOST up-to-date version of the game.
+=======
+### Notice
+3DS does not take full priority for updates anymore, there may be missing features or extra bugs for it.
+
 
 
 # Where is the computer build?
