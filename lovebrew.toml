@@ -7,5 +7,5 @@ icons = { ctr = "", hac = "", cafe = "" }
 
 [build]
 targets = ["ctr"]
-source = "game"
+source = "src"
 packaged = true
