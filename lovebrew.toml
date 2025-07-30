@@ -1,0 +1,11 @@
+[metadata]
+title = "Where Is Reality"
+author = "VirtuallyExisting"
+description = "Early Prototype"
+version = "0.0.1"
+icons = { ctr = "", hac = "", cafe = "" }
+
+[build]
+targets = ["ctr"]
+source = "src"
+packaged = true
