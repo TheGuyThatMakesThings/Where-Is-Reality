@@ -5,7 +5,13 @@
 
 
 function love.load()
-    anim8 = require 'libraries/anim8'
+    camera = require 'libraries.camera'
+    cam = camera()
+
+    anim8 = require 'libraries.anim8'
+    sti = requite 'libraries.sti'
+    gameMap = sti('maps/testmap.lua')
+
 
     love.graphics.setDefaultFilter("nearest", "nearest")
 
@@ -90,6 +96,8 @@ function love.update(dt)
 
         player.anim:update(dt)
 
+        cam:lookAt(player.x, player.y)
+
     
 end
 
@@ -97,6 +105,9 @@ end
 -- Code still works fine on computer this way, also saves time.
 function love.draw()
     if screen ~= "bottom" then
-        player.anim:draw(player.spritesheet, player.x, player.y, nil, 6)
+        cam:attach()
+            gameMap:drawLayer(gameMap.layers["Tile Layer 1"])
+            player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 10, 12)
+        cam:detach()
     end
 end
