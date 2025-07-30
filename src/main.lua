@@ -1,9 +1,12 @@
 -- NOTICE
 -- This is a prototype, nothing is final.
+-- THIS IS ALSO VERY TRUE FOR THE SPRITES! I KNOW THEY SUCK!
 
 
 
 function love.load()
+    anim8 = require 'libraries/anim8'
+
     local joysticks = love.joystick.getJoysticks()
     joystick = joysticks[1]
 
@@ -11,6 +14,20 @@ function love.load()
     player.x = 400
     player.y = 200
     player.speed = 3
+    player.spritesheet = love.graphics.newImage('sprites/prototype-sheet.png')
+
+    player.grid = anim8.newGrid( 21, 26, player.spritesheet:getWidth(), player.spritesheet:getHeight() )
+
+    player.animations = {}
+
+    player.animations.right = anim8.newAnimation( player.grid('1-4', 1), 0.2 )
+
+    player.anim = player.animations.right
+
+    love.graphics.setBackgroundColor(4, 2, 5)
+
+
+
 end
 
 function love.update(dt)
@@ -47,6 +64,9 @@ function love.update(dt)
             player.y = player.y - speed
         end
 
+
+        player.anim:update(dt)
+
     end
 end
 
@@ -54,6 +74,6 @@ end
 -- Code still works fine on computer this way, also saves time.
 function love.draw()
     if screen ~= "bottom" then
-        love.graphics.circle("fill", player.x, player.y, 30)
+        player.anim:draw(player.spritesheet, player.x, player.y)
     end
 end
