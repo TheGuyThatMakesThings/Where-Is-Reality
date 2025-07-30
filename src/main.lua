@@ -135,7 +135,7 @@ end
 
 -- Add screen into the parameters of love.draw for 3DS branch.
 -- Code still works fine on computer this way, also saves time.
-function love.draw()
+function love.draw(screen)
     if screen ~= "bottom" then
         cam:attach()
             gameMap:drawLayer(gameMap.layers["Tile Layer 1"])
