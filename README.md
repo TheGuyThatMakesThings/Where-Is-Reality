@@ -1,21 +1,22 @@
 # Where Is Reality
 A game about losing reality and maybe even yourself due to a coma.
 
-# THIS BRANCH IS OUTDATED
-Switch to computer-latest or 3DS-latest.
+# 3DS OWNERS!
+Switch to 3DS-latest for the most recent 3DS build.
+
+I am trying to prioritize both ways to play the game, but computer is going to have the MOST up-to-date version of the game.
 
 
-### The source code is OUT NOW!
-I didn't spend very long revising it, it is a very early prototype that I whipped up in a few minutes.
-Also Github's web VS Code feature is very useful, absolutely using that again.
+# Where is the computer build?
+I'm working on it, this header will disappear when I have sorted things out.
 
 
 
 # What are the targeted platforms?
-Currently the Nintendo 3DS Homebrew Community, but theoretically I could also port to Wii U and Switch homebrew with almost no problems.
+Nintendo 3DS Homebrew, Computer, and in the future most likely Wii U and Switch Homebrew.
 
 
-# How do I build the source code?
+# How do I build the source code? (To be removed for computer-latest)
 You'll need to use the LOVEBrew Bundler, this should be a good start and supplies a link to the bundler:
 https://lovebrew.org/bundler-app/overview
 
