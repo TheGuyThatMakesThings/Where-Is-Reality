@@ -140,7 +140,7 @@ function love.draw()
         cam:attach()
             gameMap:drawLayer(gameMap.layers["Tile Layer 1"])
             player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 10, 12)
-            world:draw
+            world:draw()
         cam:detach()
     end
 end
