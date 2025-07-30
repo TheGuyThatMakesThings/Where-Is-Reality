@@ -56,26 +56,23 @@ function love.update(dt)
     end
 
 
-    -- This code has been commented out because the game literally does not function on LOVEPOTION with this existing.
---[[    if platform == computer then
-
-        -- Begin basic movement
+        -- This code is only allowed to exist on the computer branch. DO NOT let this get on the 3DS-latest branch in anyway at all.
         if love.keyboard.isDown("right") then
-            player.xv = player.xv + 0.12
+            player.x = player.x + speed
         end
 
         if love.keyboard.isDown("left") then
-            player.xv = player.xv - 0.12
+            player.x = player.x - speed
         end
         if love.keyboard.isDown("down") then
-            player.yv = player.yv + 0.12
+            player.y = player.y + speed
         end
 
         if love.keyboard.isDown("up") then
-            player.yv = player.yv - 0.12
+            player.y = player.y - speed
         end
 
-    end]]
+    end
 end
 
 
