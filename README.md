@@ -16,14 +16,5 @@ I'm working on it, this header will disappear when I have sorted things out.
 Nintendo 3DS Homebrew, Computer, and in the future most likely Wii U and Switch Homebrew.
 
 
-# How do I build the source code? (To be removed for computer-latest)
-You'll need to use the LOVEBrew Bundler, this should be a good start and supplies a link to the bundler:
-https://lovebrew.org/bundler-app/overview
-
-Make sure the .zip structure is correct and throw it in the bundler, that should spit out a .3dsx file.
-
-
-
-
-# What is this game based off?
-Undertale and Deltarune, I just really like how those games play out.
+# Project Inspiration?
+Undertale and Deltarune.
