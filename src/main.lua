@@ -64,8 +64,8 @@ end
 
 function love.update(dt)
     local idling = true
-    local vx
-    local vy
+    local vx = 0
+    local vy = 0
 
     if joystick ~= nil then
         if joystick:isGamepadDown("dpleft") then
