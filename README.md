@@ -1,6 +1,9 @@
 # Where Is Reality
 A game about losing reality and maybe even yourself due to a coma.
 
+# THIS BRANCH IS OUTDATED
+Switch to computer-latest or 3DS-latest.
+
 
 ### The source code is OUT NOW!
 I didn't spend very long revising it, it is a very early prototype that I whipped up in a few minutes.
