@@ -13,6 +13,16 @@ function love.load()
     player.x = 400
     player.y = 200
     player.speed = 3
+
+    -- Loads sprite
+    testgooberstand1 = love.graphics.newImage("sprites/testgoober.png")
+    -- Sets player sprite to previously loaded sprite, if you switch this at an interval then it could be an animation.
+    player.sprite = testgooberstand1
+
+
+
+
+
 end
 
 function love.update(dt)
@@ -58,6 +68,8 @@ end
 
 function love.draw(screen)
     if screen ~= "bottom" then
-        love.graphics.circle("fill", player.x, player.y, 30)
+        -- Draw player sprite
+        love.graphics.draw(player.sprite, player.x, player.y)
+        -- Todo: Add camera library, should theoretically work fine, unlike most other libraries.
 end
 end
