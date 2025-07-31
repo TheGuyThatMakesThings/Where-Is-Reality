@@ -8,8 +8,6 @@ function love.load()
     camera = require 'libraries.camera'
     cam = camera()
 
-    wf = require 'libraries.windfield'
-    world = wf.newWorld(0, 0)
 
     anim8 = require 'libraries.anim8'
     sti = require 'libraries.sti'
@@ -42,15 +40,15 @@ function love.load()
     player.collider:setFixedRotation(true)
 
 
-
-    walls = {}
-    if gameMap.layers["Walls"] then
-        for i, obj in pairs(gameMap.layers["Walls"].objects) do
-            local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
-            wall:setType('static')
-            table.insert(walls, wall)
-        end
-    end
+--
+--    walls = {}
+--    if gameMap.layers["Walls"] then
+--        for i, obj in pairs(gameMap.layers["Walls"].objects) do
+  --          local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
+ --           wall:setType('static')
+ --           table.insert(walls, wall)
+--        end
+--    end
 
 
 
@@ -93,37 +91,34 @@ function love.update(dt)
 
         -- This code is only allowed to exist on the computer branch. DO NOT let this get on the 3DS-latest branch in anyway at all.
         if love.keyboard.isDown("right") then
-            vx = player.speed
+            player.x = player.x + player.speed
             player.anim = player.animations.right
             idling = false
         end
 
         if love.keyboard.isDown("left") then
-            vx = player.speed * -1
+            player.x = player.x - player.speed
             player.anim = player.animations.left
             idling = false
         end
         if love.keyboard.isDown("down") then
-            vy = player.speed
+            player.y = player.y - player.speed
             player.anim = player.animations.down
             idling = false
         end
 
         if love.keyboard.isDown("up") then
-            vy = player.speed * -1
+            player.y = player.y + player.speed
             player.anim = player.animations.up
             idling = false
         end
 
-        player.collider:setLinearVelocity(vx, vy)
 
         if idling == true then
             player.anim:gotoFrame(1)
         end
 
-        world:update(dt)
-        player.x = player.collider:getX()
-        player.y = player.collider:getY()
+
 
 
         player.anim:update(dt)
@@ -140,7 +135,6 @@ function love.draw(screen)
         cam:attach()
             gameMap:drawLayer(gameMap.layers["Tile Layer 1"])
             player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 10, 12)
-            world:draw()
         cam:detach()
     end
- end
+end
