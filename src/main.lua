@@ -36,8 +36,6 @@ function love.load()
 
     player.anim = player.animations.right
     player.idling = true
-    player.collider = world:newBSGRectangleCollider(400, 250, 50, 100, 10)
-    player.collider:setFixedRotation(true)
 
 
 --
