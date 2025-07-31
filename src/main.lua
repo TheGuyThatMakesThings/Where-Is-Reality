@@ -87,29 +87,6 @@ function love.update(dt)
     end
 
 
-        -- This code is only allowed to exist on the computer branch. DO NOT let this get on the 3DS-latest branch in anyway at all.
-        if love.keyboard.isDown("right") then
-            player.x = player.x + player.speed
-            player.anim = player.animations.right
-            idling = false
-        end
-
-        if love.keyboard.isDown("left") then
-            player.x = player.x - player.speed
-            player.anim = player.animations.left
-            idling = false
-        end
-        if love.keyboard.isDown("down") then
-            player.y = player.y - player.speed
-            player.anim = player.animations.down
-            idling = false
-        end
-
-        if love.keyboard.isDown("up") then
-            player.y = player.y + player.speed
-            player.anim = player.animations.up
-            idling = false
-        end
 
 
         if idling == true then
